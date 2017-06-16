@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DTA_Android_Sante</string>
+    <string name="button_add">ADD</string>
 </resources>

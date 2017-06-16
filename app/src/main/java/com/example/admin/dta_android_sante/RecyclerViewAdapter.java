@@ -22,7 +22,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     /**
      * List items
      */
-    private List<User> items;
+    private List<User> users;
     /**
      * the resource id of item Layout
      */
@@ -32,11 +32,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     /**
      * Constructor RecyclerSimpleViewAdapter
-     * @param items : the list items
+     * @param users : the list items
      * @param itemLayout : the resource id of itemView
      */
-    public RecyclerViewAdapter(List<User> items, int itemLayout, Fragment f) {
-        this.items = items;
+    public RecyclerViewAdapter(List<User> users, int itemLayout, Fragment f) {
+        this.users = users;
         this.itemLayout = itemLayout;
         this.fragment = f;
     }
@@ -60,7 +60,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
      */
     @Override
     public int getItemCount() {
-        return items.size();
+        return users.size();
     }
     /**
      * Bind View Holder with Items
@@ -70,10 +70,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, final int position) {
         // find item by position
-        User item = items.get(position);
+        User item = users.get(position);
         // save information in holder, we have ne type in this adapter
-        holder.primaryText.setText(item.getNom());
-        holder.primaryText.setOnClickListener(new View.OnClickListener() {
+        holder.mContentView.setText(item.getNom());
+        holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UtilisateurFragment articleFrag = (UtilisateurFragment)
@@ -106,16 +106,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // TextViex
-        public TextView primaryText;
+        public TextView mContentView;
+        public View view;
         /**
          * Constructor ViewHolder
-         * @param itemView: the itemView
+         * @param v: the itemView
          */
-        public ViewHolder(View itemView) {
-            super(itemView);
-            // link primaryText
-           // primaryText = (TextView) itemView.findViewById(R.id.);
+        public ViewHolder(View v) {
+            super(v);
+            this.view = v;
+            mContentView = (TextView) itemView.findViewById(R.id.content);
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
 }

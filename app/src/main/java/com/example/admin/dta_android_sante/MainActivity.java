@@ -1,13 +1,17 @@
 package com.example.admin.dta_android_sante;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.example.admin.dta_android_sante.database.datasource.DataSource;
+import com.example.admin.dta_android_sante.database.modele.User;
+import com.google.gson.Gson;
+
 public class MainActivity extends FragmentActivity {
+
+    DataSource<User> dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +34,24 @@ public class MainActivity extends FragmentActivity {
 
     // Triggered when the Floating Action Button is clicked
     public void onFABClick(View view){
-        Log.d("FAB", "I was clicked");
         Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 2);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        String flux = data.getStringExtra("NEWUSER"); // Tester si pas null ;-)
+        User utilisateur = new Gson().fromJson(flux, User.class);
+
+        try {
+            dataSource.insert(utilisateur);
+        } catch (Exception e) {
+            // Que faire :-(
+            e.printStackTrace();
+        }
+
+        // Indiquer un changement au RecycleView
+        //chargerUtilisateurs();
+        //adapter.notifyDataSetChanged();
     }
 }
