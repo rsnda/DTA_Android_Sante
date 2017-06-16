@@ -103,7 +103,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.itemView.setBackgroundResource(R.color.colorPrimaryDark);
         }
 
-        holder.mView
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -116,7 +115,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             // link primaryText
-            primaryText = (TextView) itemView.findViewById(android.R.id.text1);
+           // primaryText = (TextView) itemView.findViewById(R.id.);
         }
     }
 }

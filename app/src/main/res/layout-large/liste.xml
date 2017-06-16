@@ -2,17 +2,19 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.example.admin.dta_android_sante.MainActivity">
 
-    <fragement android:name="fr.formation.sante.ListeUtilisateurFragment"
+    <fragment android:name="com.example.admin.dta_android_sante.ListeUtilisateurFragment"
                 android:id="@+id/liste_fragment"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
 
-    <fragement android:name="fr.formation.sante.UtilisateurFragment"
+    <fragment android:name="com.example.admin.dta_android_sante.UtilisateurFragment"
                 android:id="@+id/article_fragment"
                 android:layout_weight="2"
                 android:layout_width="0dp"
@@ -22,8 +24,10 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
+        android:clickable="true"
+        android:onClick="onFABClick"
         app:srcCompat="@android:drawable/ic_input_add"/>
 
 </LinearLayout>

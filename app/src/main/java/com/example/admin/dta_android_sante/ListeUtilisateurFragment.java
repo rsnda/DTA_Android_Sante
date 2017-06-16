@@ -19,12 +19,12 @@ public class ListeUtilisateurFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstaceState) {
 
-        View view = inflater.inflate(R.layout.utilisateur_list, container, false);
+        View view = inflater.inflate(R.layout.list_utilisateurs, container, false);
 
         // Instanciation du recyclerview :
         recyclerView = (RecyclerView) view;
 
-        //rvAdapter = new RecyclerViewAdapter(utilisateurs, android.R.layout.simple_list_item_1);
+        //rvAdapter = new RecyclerViewAdapter(utilisateurs, android.R.layout.simple_list_item_1, R.id.f);
         //recyclerView.setAdapter(rvAdapter);
 
         return view;

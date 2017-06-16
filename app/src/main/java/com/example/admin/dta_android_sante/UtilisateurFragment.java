@@ -1,18 +1,18 @@
 package com.example.admin.dta_android_sante;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import static android.support.test.InstrumentationRegistry.getArguments;
 
 /**
  * Created by admin on 16/06/2017.
  */
 
-public class UtilisateurFragment {
+public class UtilisateurFragment extends Fragment{
     final static String ARG_POSITION = "position";
     int mCurrentPosition = -1;
     TextView article;

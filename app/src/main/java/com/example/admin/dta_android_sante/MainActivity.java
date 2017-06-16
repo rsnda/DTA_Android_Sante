@@ -1,27 +1,20 @@
 package com.example.admin.dta_android_sante;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.liste);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                // ...
-            }
-        });
-
-
-        if (findViewById(R.id.fragement_container) != null){
+        if (findViewById(R.id.fragment_container) != null){
 
             if(savedInstanceState != null) {
                 return;
@@ -29,9 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
             ListeUtilisateurFragment firstFragment = new ListeUtilisateurFragment();
             firstFragment.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction()
+            getFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, firstFragment).commit();
 
         }
+    }
+
+    // Triggered when the Floating Action Button is clicked
+    public void onFABClick(View view){
+        Log.d("FAB", "I was clicked");
+        Intent intent = new Intent(MainActivity.this, AddUserActivity.class);
+        startActivity(intent);
     }
 }
